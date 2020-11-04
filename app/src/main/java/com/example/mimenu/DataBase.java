@@ -11,4 +11,5 @@ import com.example.mimenu.Tablas.Receta;
 @Database(entities = {Plato.class, Ingrediente.class, Receta.class},version = 1)
 public abstract class DataBase extends RoomDatabase {
     public abstract Consultas consultas();
+
 }

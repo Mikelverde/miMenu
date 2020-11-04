@@ -9,5 +9,5 @@ public class Plato {
     public int idPlato;
     public String nombrePlato;
     public String tipo;
-    public int orden;
+    public String orden;
 }

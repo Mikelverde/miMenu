@@ -1,7 +1,6 @@
 package com.example.mimenu.Metodos;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import androidx.room.Room;
 

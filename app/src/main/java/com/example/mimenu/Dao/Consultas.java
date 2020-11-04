@@ -15,7 +15,7 @@ public interface Consultas {
     @Insert
     long insertPlato(Plato plato);
     @Insert
-    long inserIngrediente(Ingrediente ingrediente);
+    long insertIngrediente(Ingrediente ingrediente);
     @Query("SELECT * FROM Plato")
     List<Plato> getPlato();
     @Query("SELECT * FROM Ingrediente")

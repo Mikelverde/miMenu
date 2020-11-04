@@ -8,4 +8,5 @@ public class Ingrediente {
     @PrimaryKey(autoGenerate = true)
     public int idIngrediente;
     public String unidades;
+    public String nombreIngrediente;
 }
