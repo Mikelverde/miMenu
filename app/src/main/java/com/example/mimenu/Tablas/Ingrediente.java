@@ -9,4 +9,13 @@ public class Ingrediente {
     public int idIngrediente;
     public String unidades;
     public String nombreIngrediente;
+
+    public Ingrediente(String unidades, String nombreIngrediente) {
+        this.unidades = unidades;
+        this.nombreIngrediente = nombreIngrediente;
+    }
+
+    public Ingrediente() {
+
+    }
 }

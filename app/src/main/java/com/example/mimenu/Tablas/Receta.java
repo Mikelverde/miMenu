@@ -6,5 +6,15 @@ import androidx.room.Entity;
 public class Receta {
     public int idPlato;
     public int idIngrediente;
-    public int cantidad;
+    public double cantidad;
+
+    public Receta(int idPlato, int idIngrediente, double cantidad) {
+        this.idPlato = idPlato;
+        this.idIngrediente = idIngrediente;
+        this.cantidad = cantidad;
+    }
+
+    public Receta() {
+
+    }
 }

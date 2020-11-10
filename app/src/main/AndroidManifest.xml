@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiMenu">
-        <activity android:name=".Vistas.NuevaReceta"></activity>
+        <activity android:name=".Vistas.ListaPlatos"></activity>
+        <activity android:name=".Vistas.NuevaReceta" />
         <activity android:name=".Vistas.NuevoPlato" />
         <activity android:name=".MainActivity">
             <intent-filter>

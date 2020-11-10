@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,13 +15,15 @@ import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Ingrediente;
 import com.example.mimenu.Tablas.Plato;
+import com.example.mimenu.Tablas.Receta;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NuevaReceta extends AppCompatActivity {
 
-    private TextView txtPlato,txtnombreIngrediente,txtUnidades;
+    private TextView txtPlato;
+    private EditText txtnombreIngrediente,txtUnidades,txtCantidad;
     DataBase dataBase;
     private Plato plato;
     private Bundle datosPlato;
@@ -35,16 +38,23 @@ public class NuevaReceta extends AppCompatActivity {
 
         //Cargamos la BBDD con el metodo
         dataBase= Metodos.getDataBase(this);
-        //Creamos un plato
-        plato=new Plato();
         //Cargamos los elementos de la pantalla con lo que vamos a interactuar
         txtPlato=findViewById(R.id.txt_plato);
         txtnombreIngrediente=findViewById(R.id.txt_nombreIngrediente);
         txtUnidades=findViewById(R.id.txt_unidades);
         spinnerIngredientes=findViewById(R.id.spn_ingredientesReceta);
+        txtCantidad=findViewById(R.id.txt_cantidad);
         //Recuperamos la informacion del intent para trabajar con el plato guardado en nuevoPlato.class
-        nombrePlatoGuardado=getIntent().getStringExtra("nombrePlato");
-        txtPlato.setText(nombrePlatoGuardado);
+        nombrePlatoGuardado=getIntent().getStringExtra("plato");
+        try{
+            plato=dataBase.consultas().buscarPlato(nombrePlatoGuardado);
+         }catch (Exception e){
+        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+        txtPlato.setText(plato.nombrePlato);
+
+
+
         //Los arrayList para cargar en los spiner
         arrayListIngredientes=generarArrayIngredientes();
         //Generamos los adapter para cargar los spinner
@@ -88,6 +98,24 @@ public class NuevaReceta extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void insertarReceta(View view){
+        Receta receta=new Receta();
+        try {
+            receta.idPlato=plato.idPlato;
+            receta.idIngrediente=dataBase.consultas().buscarIdIngrediente(spinnerIngredientes.getSelectedItem().toString());
+            receta.cantidad=Integer.parseInt(txtCantidad.getText().toString());
+            long correcto=dataBase.consultas().insertReceta(receta);
+            if(correcto>0){
+                Toast.makeText(this, "INGREDIENTE GUARDADO", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "HA OCURRIDO UN ERROR", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
 
 

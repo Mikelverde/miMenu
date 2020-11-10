@@ -1,6 +1,7 @@
 package com.example.mimenu.Dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -24,4 +25,14 @@ public interface Consultas {
     long insertReceta(Receta receta);
     @Query("SELECT * FROM Receta WHERE idPlato=:plato")
     List<Receta> getReceta(int plato);
+    @Query("SELECT idIngrediente FROM Ingrediente WHERE nombreIngrediente LIKE :nombreIngrediente")
+    int buscarIdIngrediente(String nombreIngrediente);
+    @Query("SELECT * FROM Plato WHERE nombrePlato LIKE :nombrePlato")
+    Plato buscarPlato(String nombrePlato);
+    @Query("DELETE FROM Plato ")
+    void borrarTablaPlato();
+    @Query("DELETE FROM Ingrediente ")
+    void borrarTablaIngrediente();
+    @Query("DELETE FROM Receta ")
+    void borrarTablaReceta();
 }

@@ -69,7 +69,7 @@ public class NuevoPlato extends AppCompatActivity {
             if(correcto>0){
                 Toast.makeText(this, "PLATO GUARDADO", Toast.LENGTH_SHORT).show();
                 //si todo ha salido bien cambiamos de pantalla y pasamos la idPlato a la siguiente pantalla
-                i.putExtra("nombrePlato",plato.nombrePlato);
+                i.putExtra("plato",plato.nombrePlato);
                 startActivity(i);
             }else {
                 Toast.makeText(this, "HA OCURRIDO UN ERROR", Toast.LENGTH_SHORT).show();

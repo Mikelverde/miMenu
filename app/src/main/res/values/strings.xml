@@ -2,4 +2,8 @@
     <string name="app_name">miMenu</string>
     <string name="nuevo_plato">NUEVO PLATO</string>
     <string name="nombre_del_plato">Nombre del plato</string>
+    <string name="nuevo_ingrediente">NUEVO INGREDIENTE</string>
+    <string name="nombre_del_ingrediente">Nombre del ingrediente</string>
+    <string name="tipo_de_unidad">Tipo de unidad</string>
+    <string name="a_adir_ingrediente_a_la_receta">AÑADIR INGREDIENTE A LA RECETA</string>
 </resources>
