@@ -3,13 +3,14 @@
     package="com.example.mimenu">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiMenu">
-        <activity android:name=".Vistas.ListaPlatos"></activity>
+        <activity android:name=".Vistas.detallesPlato"></activity>
+        <activity android:name=".Vistas.ListaPlatos" />
         <activity android:name=".Vistas.NuevaReceta" />
         <activity android:name=".Vistas.NuevoPlato" />
         <activity android:name=".MainActivity">

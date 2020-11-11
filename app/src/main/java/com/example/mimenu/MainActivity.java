@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void cargarBBDD(View view){
       DataBase dataBase=Metodos.getDataBase(this);
-        Metodos.borrarBBDD(dataBase);
-        Metodos.cargarIngredientes(dataBase);
-        Metodos.cargarPlatos(dataBase);
-        Metodos.cargarRecetas(dataBase);
+      Metodos.borrarBBDD(dataBase);
+      Metodos.cargarIngredientes(dataBase);
+      Metodos.cargarPlatos(dataBase);
+      Metodos.cargarRecetas(dataBase);
     }
 }

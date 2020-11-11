@@ -47,7 +47,7 @@ public class NuevaReceta extends AppCompatActivity {
         //Recuperamos la informacion del intent para trabajar con el plato guardado en nuevoPlato.class
         nombrePlatoGuardado=getIntent().getStringExtra("plato");
         try{
-            plato=dataBase.consultas().buscarPlato(nombrePlatoGuardado);
+            plato=dataBase.consultas().buscarPlatoXNombre(nombrePlatoGuardado);
          }catch (Exception e){
         Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }

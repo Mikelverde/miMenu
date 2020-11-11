@@ -3,7 +3,10 @@ package com.example.mimenu.Vistas;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.mimenu.DataBase;
@@ -35,6 +38,17 @@ public class ListaPlatos extends AppCompatActivity {
         //iniciamos el arrayadapter para poder cargar el listView con la lista de platos
         PlatosArrayAdapter platosArrayAdapter=new PlatosArrayAdapter(this,platos);
         listViewPlatos.setAdapter(platosArrayAdapter);
+
+        listViewPlatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                int itemSeleccionado=listViewPlatos.getCheckedItemPosition();
+                Intent intent=new Intent(getApplicationContext(),detallesPlato.class);
+                intent.putExtra("idPlato",position+1);
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
 

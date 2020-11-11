@@ -28,11 +28,18 @@ public interface Consultas {
     @Query("SELECT idIngrediente FROM Ingrediente WHERE nombreIngrediente LIKE :nombreIngrediente")
     int buscarIdIngrediente(String nombreIngrediente);
     @Query("SELECT * FROM Plato WHERE nombrePlato LIKE :nombrePlato")
-    Plato buscarPlato(String nombrePlato);
+    Plato buscarPlatoXNombre(String nombrePlato);
     @Query("DELETE FROM Plato ")
     void borrarTablaPlato();
     @Query("DELETE FROM Ingrediente ")
     void borrarTablaIngrediente();
     @Query("DELETE FROM Receta ")
     void borrarTablaReceta();
+    @Query("SELECT * FROM Plato WHERE idPlato = :idPlato")
+    Plato buscarPlatoXId(int idPlato);
+    @Query("SELECT * FROM Ingrediente WHERE idIngrediente=:idIngrediente")
+    Ingrediente buscarIngredienteXId(int idIngrediente);
+
+
+
 }
