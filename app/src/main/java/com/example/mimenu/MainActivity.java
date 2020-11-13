@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.Vistas.ListaPlatos;
+import com.example.mimenu.Vistas.MenuSemanal;
 import com.example.mimenu.Vistas.NuevoPlato;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_listaPlatos:
                 i=new Intent(this, ListaPlatos.class);
+                startActivity(i);
+                break;
+            case R.id.btn_menu:
+                i=new Intent(this, MenuSemanal.class);
                 startActivity(i);
                 break;
         }

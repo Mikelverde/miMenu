@@ -2,7 +2,9 @@ package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.mimenu.Dao.Consultas;
 import com.example.mimenu.DataBase;
+import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.PlatosArrayAdapter;
 import com.example.mimenu.R;
@@ -20,7 +23,7 @@ import com.example.mimenu.Tablas.Receta;
 
 import java.util.List;
 
-public class detallesPlato extends AppCompatActivity {
+public class DetallesPlato extends AppCompatActivity {
 
     private TextView txtnombrePlato,txtTipoPlato, txtOrdenPLato;
     private ImageView icono;
@@ -78,10 +81,17 @@ public class detallesPlato extends AppCompatActivity {
                 case "Pescado":
                     icono.setImageResource(R.drawable.fish);
                     break;
+                case "Ensalada":
+                    icono.setImageResource(R.drawable.ensalada);
+                    break;
             }
 
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-}
+    public void atras(View view){
+        Intent i=new Intent(this, MainActivity.class);
+        startActivity(i);
+        }
+    }

@@ -49,6 +49,7 @@ public class NuevoPlato extends AppCompatActivity {
         arrayListTipo.add("Arroz-Patata");
         arrayListTipo.add("Carne");
         arrayListTipo.add("Pescado");
+        arrayListTipo.add("Ensalada");
         //Generamos los adapter para cargar los spinner
         ArrayAdapter<String> adapterTipo=new ArrayAdapter(this, android.R.layout.simple_spinner_item,arrayListTipo);
         ArrayAdapter<String> adapterOrden=new ArrayAdapter(this, android.R.layout.simple_spinner_item,arrayListOrden);

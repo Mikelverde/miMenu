@@ -48,4 +48,8 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    // para trabajar con CardViews
+    implementation 'com.android.support:cardview-v7:29.0.0'
+
 }

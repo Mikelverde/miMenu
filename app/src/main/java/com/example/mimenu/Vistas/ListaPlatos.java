@@ -43,7 +43,7 @@ public class ListaPlatos extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 int itemSeleccionado=listViewPlatos.getCheckedItemPosition();
-                Intent intent=new Intent(getApplicationContext(),detallesPlato.class);
+                Intent intent=new Intent(getApplicationContext(), DetallesPlato.class);
                 intent.putExtra("idPlato",position+1);
                 startActivity(intent);
                 return false;

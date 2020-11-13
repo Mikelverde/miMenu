@@ -18,4 +18,10 @@ public class Ingrediente {
     public Ingrediente() {
 
     }
+
+    public Ingrediente(int idIngrediente, String unidades, String nombreIngrediente) {
+        this.idIngrediente = idIngrediente;
+        this.unidades = unidades;
+        this.nombreIngrediente = nombreIngrediente;
+    }
 }

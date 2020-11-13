@@ -39,6 +39,10 @@ public interface Consultas {
     Plato buscarPlatoXId(int idPlato);
     @Query("SELECT * FROM Ingrediente WHERE idIngrediente=:idIngrediente")
     Ingrediente buscarIngredienteXId(int idIngrediente);
+    @Query("SELECT * FROM Plato WHERE tipo LIKE :tipo")
+    List<Plato> buscarPlatoXTipo(String tipo);
+    @Query("SELECT * FROM Plato WHERE orden LIKE :orden")
+    List<Plato> buscarPlatoXOrden(String orden);
 
 
 
