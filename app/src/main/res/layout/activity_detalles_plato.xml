@@ -38,6 +38,7 @@
 
     <Button
         android:id="@+id/btn_atras"
+        style="@style/botones"
         android:layout_width="260dp"
         android:layout_height="90dp"
         android:text="VOLVER"

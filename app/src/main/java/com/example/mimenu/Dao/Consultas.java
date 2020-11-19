@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.mimenu.Tablas.Ingrediente;
+import com.example.mimenu.Tablas.IngredienteListaCompra;
+import com.example.mimenu.Tablas.Menu;
 import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
 
@@ -18,13 +20,13 @@ public interface Consultas {
     @Insert
     long insertIngrediente(Ingrediente ingrediente);
     @Query("SELECT * FROM Plato")
-    List<Plato> getPlato();
+    List<Plato> getPlatos();
     @Query("SELECT * FROM Ingrediente")
     List<Ingrediente> getIngrediente();
     @Insert
     long insertReceta(Receta receta);
     @Query("SELECT * FROM Receta WHERE idPlato=:plato")
-    List<Receta> getReceta(int plato);
+    List<Receta> buscarRecetaXIdPlato(int plato);
     @Query("SELECT idIngrediente FROM Ingrediente WHERE nombreIngrediente LIKE :nombreIngrediente")
     int buscarIdIngrediente(String nombreIngrediente);
     @Query("SELECT * FROM Plato WHERE nombrePlato LIKE :nombrePlato")
@@ -43,6 +45,15 @@ public interface Consultas {
     List<Plato> buscarPlatoXTipo(String tipo);
     @Query("SELECT * FROM Plato WHERE orden LIKE :orden")
     List<Plato> buscarPlatoXOrden(String orden);
+    @Insert
+    long insertMenu(Menu plato);
+    @Query("SELECT * FROM Menu")
+    List<Menu> listarMenu();
+    @Delete
+    void borrarPlatoMenu(List<Menu> menuList);
+
+    @Query("SELECT nombreIngrediente, SUM(cantidad) as cantidad,MAX(unidades) as unidades FROM Menu INNER JOIN Receta ON menu.idPlato=Receta.idPlato INNER JOIN Ingrediente ON Receta.idIngrediente=Ingrediente.idIngrediente GROUP BY nombreIngrediente")
+    List<IngredienteListaCompra> listaCompra();
 
 
 

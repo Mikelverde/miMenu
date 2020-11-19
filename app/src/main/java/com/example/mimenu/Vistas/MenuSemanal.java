@@ -2,12 +2,17 @@ package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mimenu.DataBase;
+import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
+import com.example.mimenu.Tablas.Menu;
 import com.example.mimenu.Tablas.Plato;
 
 import java.util.ArrayList;
@@ -17,6 +22,7 @@ public class MenuSemanal extends AppCompatActivity {
 
     DataBase dataBase;
     private List<Plato> verduras, legumbres, pastas, arrocesPatatas, segundos, ensaladas;
+    private List<Menu> menuSemanal;
     private TextView pLu,sLu,pMa,sMa,pMi,sMi,pJu,sJu,pVi,sVi,pSa,sSa,pDo,sDo;
     Plato ensalada1, ensalada2,ensalada3,ensalada4;
     Plato segundo1, segundo2,segundo3;
@@ -47,20 +53,36 @@ public class MenuSemanal extends AppCompatActivity {
 
         dataBase= Metodos.getDataBase(this);
 
-        verduras=buscarPlatoXTipo("Verdura");
-        legumbres=buscarPlatoXTipo("Legumbre");
-        pastas=buscarPlatoXTipo("Pasta");
-        arrocesPatatas=buscarPlatoXTipo("Arroz-Patatas");
-        ensaladas=buscarPlatoXTipo("Ensalada");
-        segundos=dataBase.consultas().buscarPlatoXOrden("Segundo");
 
-        int numeroDias=7;
+
         // 2 legumbre y ensalada
         // 1  pasta y ensalada
         // 1  arroz y ensalada
         // 3  verdura y un segundo
 
 
+        if(dataBase.consultas().listarMenu().size()==0){
+            menuSemanal= generarMenu();
+            escribirMenu(menuSemanal);
+        }else {
+            menuSemanal=dataBase.consultas().listarMenu();
+            escribirMenu(menuSemanal);
+        }
+
+    }
+
+    private void cragarPlatosXTipo() {
+        verduras=buscarPlatoXTipo("Verdura");
+        legumbres=buscarPlatoXTipo("Legumbre");
+        pastas=buscarPlatoXTipo("Pasta");
+        arrocesPatatas=buscarPlatoXTipo("Arroz-Patatas");
+        ensaladas=buscarPlatoXTipo("Ensalada");
+        segundos=dataBase.consultas().buscarPlatoXOrden("Segundo");
+    }
+
+    //genera y guarda en la bbdd un menu
+    private List<Menu> generarMenu() {
+        cragarPlatosXTipo();
         int primeraLegumbre=generarNumeroAleatorioEntre(0,legumbres.size());
         legumbre1=legumbres.get(primeraLegumbre);
         legumbres.remove(primeraLegumbre);
@@ -90,7 +112,31 @@ public class MenuSemanal extends AppCompatActivity {
         ensalada3=ensaladas.get(generarNumeroAleatorioEntre(0,ensaladas.size()));
         ensalada4=ensaladas.get(generarNumeroAleatorioEntre(0,ensaladas.size()));
 
-        generarMenu();
+        //cargamos los platos anteriores en la tabla menu, mediante el uso de una List<Menu> menuSemanal
+        menuSemanal= new ArrayList<>();
+        try {
+            menuSemanal.add(new Menu(legumbre1.idPlato));
+            menuSemanal.add(new Menu(ensalada1.idPlato));
+            menuSemanal.add(new Menu(verdura1.idPlato));
+            menuSemanal.add(new Menu(segundo1.idPlato));
+            menuSemanal.add(new Menu(pasta.idPlato));
+            menuSemanal.add(new Menu(ensalada2.idPlato));
+            menuSemanal.add(new Menu(legumbre2.idPlato));
+            menuSemanal.add(new Menu(ensalada3.idPlato));
+            menuSemanal.add(new Menu(verdura2.idPlato));
+            menuSemanal.add(new Menu(segundo2.idPlato));
+            menuSemanal.add(new Menu(verdura3.idPlato));
+            menuSemanal.add(new Menu(segundo3.idPlato));
+            menuSemanal.add(new Menu(arroz.idPlato));
+            menuSemanal.add(new Menu(ensalada4.idPlato));
+
+            for (int i = 0; i <menuSemanal.size(); i++) {
+                dataBase.consultas().insertMenu(menuSemanal.get(i));
+            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return dataBase.consultas().listarMenu();
     }
 
     //Metodos para cargar en arrays los platos disponibles divididos por tipo de plato
@@ -105,25 +151,57 @@ public class MenuSemanal extends AppCompatActivity {
         return numAleatorio;
     }
 
-    public void generarMenu(){
+    //cargamos los daos de la tabla menu para rellenar los TextView correspondientes
+    public void escribirMenu(List<Menu> menusemanal){
+        //Para un futuro desarrollo donde habra distintos tipos de menus semanales
         int semana=generarNumeroAleatorioEntre(1,3);
         switch (1){
             case 1:
-                pLu.setText(legumbre1.nombrePlato);
-                sLu.setText(ensalada1.nombrePlato);
-                pMa.setText(verdura1.nombrePlato);
-                sMa.setText(segundo1.nombrePlato);
-                pMi.setText(pasta.nombrePlato);
-                sMi.setText(ensalada2.nombrePlato);
-                pJu.setText(legumbre2.nombrePlato);
-                sJu.setText(ensalada2.nombrePlato);
-                pVi.setText(verdura2.nombrePlato);
-                sVi.setText(segundo2.nombrePlato);
-                pSa.setText(verdura3.nombrePlato);
-                sSa.setText(segundo3.nombrePlato);
-                pDo.setText(arroz.nombrePlato);
-                sDo.setText(ensalada4.nombrePlato);
+                pLu.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(0).idPlato).nombrePlato);
+                sLu.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(1).idPlato).nombrePlato);
+                pMa.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(2).idPlato).nombrePlato);
+                sMa.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(3).idPlato).nombrePlato);
+                pMi.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(4).idPlato).nombrePlato);
+                sMi.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(5).idPlato).nombrePlato);
+                pJu.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(6).idPlato).nombrePlato);
+                sJu.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(7).idPlato).nombrePlato);
+                pVi.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(8).idPlato).nombrePlato);
+                sVi.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(9).idPlato).nombrePlato);
+                pSa.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(10).idPlato).nombrePlato);
+                sSa.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(11).idPlato).nombrePlato);
+                pDo.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(12).idPlato).nombrePlato);
+                sDo.setText(dataBase.consultas().buscarPlatoXId(menuSemanal.get(13).idPlato).nombrePlato);
         }
+    }
+
+    public void grabarMenu(View view){
+
+        List<Menu> menuList=dataBase.consultas().listarMenu();
+        if(menuList.size()==0){//no existe un menu previo, hay que generarlo
+           try {
+               generarMenu();
+            }catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }else {//existe un menu previo, hay que borrarlo y generar uno nuevo
+            /*for (int i = 0; i <menuSemanal.size() ; i++) {
+                dataBase.consultas().borrarPlatoMenu(menuSemanal.get(i));
+            }*/
+            menuSemanal=dataBase.consultas().listarMenu();
+            dataBase.consultas().borrarPlatoMenu(menuSemanal);
+            generarMenu();
+            try {
+            }catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            escribirMenu(menuSemanal);
+
+        }
+    }
+    public void atras2(View view){
+        Intent i=new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
 }

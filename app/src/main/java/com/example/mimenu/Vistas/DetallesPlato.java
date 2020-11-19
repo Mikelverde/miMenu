@@ -10,11 +10,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mimenu.Dao.Consultas;
 import com.example.mimenu.DataBase;
 import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
-import com.example.mimenu.PlatosArrayAdapter;
 import com.example.mimenu.R;
 import com.example.mimenu.RecetaArrayAdapter;
 import com.example.mimenu.Tablas.Ingrediente;
@@ -56,7 +54,7 @@ public class DetallesPlato extends AppCompatActivity {
             txtOrdenPLato.setText("Orden: "+plato.orden);
 
             //todos los ingredientes de la receta
-            receta=dataBase.consultas().getReceta(plato.idPlato);
+            receta=dataBase.consultas().buscarRecetaXIdPlato(plato.idPlato);
 
             //iniciamos el arrayadapter para poder cargar el listView con la lista de platos
             RecetaArrayAdapter recetaArrayAdapter=new RecetaArrayAdapter(this,receta);

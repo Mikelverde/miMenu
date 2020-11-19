@@ -7,16 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.mimenu.Metodos.Metodos;
+import com.example.mimenu.Vistas.ListaCompra;
 import com.example.mimenu.Vistas.ListaPlatos;
 import com.example.mimenu.Vistas.MenuSemanal;
 import com.example.mimenu.Vistas.NuevoPlato;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DataBase dataBase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dataBase=Metodos.getDataBase(this);
+        if(dataBase.consultas().getPlatos().size()==0){
+            Metodos.cargarIngredientes(dataBase);
+            Metodos.cargarPlatos(dataBase);
+            Metodos.cargarRecetas(dataBase);
+        }
+
+
     }
 
     public void PantallaInicio(View view){
@@ -34,14 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 i=new Intent(this, MenuSemanal.class);
                 startActivity(i);
                 break;
+            case R.id.btn_listaCompra:
+                i=new Intent(this, ListaCompra.class);
+                startActivity(i);
+                break;
         }
-    }
-
-    public void cargarBBDD(View view){
-      DataBase dataBase=Metodos.getDataBase(this);
-      Metodos.borrarBBDD(dataBase);
-      Metodos.cargarIngredientes(dataBase);
-      Metodos.cargarPlatos(dataBase);
-      Metodos.cargarRecetas(dataBase);
     }
 }

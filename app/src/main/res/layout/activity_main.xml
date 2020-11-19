@@ -8,34 +8,23 @@
 
     <Button
         android:id="@+id/btn_NuevoPlato"
+        style="@style/botones"
         android:layout_width="260dp"
         android:layout_height="90dp"
         android:onClick="PantallaInicio"
         android:text="@string/nuevo_plato"
         android:textSize="24sp"
+        app:iconTint="#00897B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
-
-    <Button
-        android:id="@+id/btn_cargarBBDD"
-        android:layout_width="260dp"
-        android:layout_height="90dp"
-        android:onClick="cargarBBDD"
-        android:text="CARGAR BBDD"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_NuevoPlato"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/btn_listaPlatos"
+        style="@style/botones"
         android:layout_width="260dp"
         android:layout_height="90dp"
         android:onClick="PantallaInicio"
@@ -45,11 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cargarBBDD"
+        app:layout_constraintTop_toBottomOf="@+id/btn_NuevoPlato"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_menu"
+        style="@style/botones"
         android:layout_width="260dp"
         android:layout_height="90dp"
         android:onClick="PantallaInicio"
@@ -60,5 +50,21 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_listaPlatos"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_listaCompra"
+        style="@style/botones"
+        android:layout_width="260dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="8dp"
+        android:onClick="PantallaInicio"
+        android:text="LISTA DE LA COMPRA"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_menu"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

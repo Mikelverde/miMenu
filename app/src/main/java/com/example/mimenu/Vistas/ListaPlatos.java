@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.mimenu.DataBase;
+import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.PlatosArrayAdapter;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Plato;
@@ -28,12 +29,10 @@ public class ListaPlatos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_platos);
         //iniciamos la bbdd
-        dataBase= Room.databaseBuilder(getApplicationContext(),DataBase.class,"DataBase")
-                .allowMainThreadQueries()
-                .build();
+        dataBase= Metodos.getDataBase(this);
 
         listViewPlatos=findViewById(R.id.listV_Ingredientes);
-        platos=dataBase.consultas().getPlato();//todos los platos de la bbdd
+        platos=dataBase.consultas().getPlatos();//todos los platos de la bbdd
 
         //iniciamos el arrayadapter para poder cargar el listView con la lista de platos
         PlatosArrayAdapter platosArrayAdapter=new PlatosArrayAdapter(this,platos);
@@ -49,6 +48,20 @@ public class ListaPlatos extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void cargarBBDD(View view){
+        DataBase dataBase=Metodos.getDataBase(this);
+        Metodos.borrarBBDD(dataBase);
+        Metodos.cargarIngredientes(dataBase);
+        Metodos.cargarPlatos(dataBase);
+        Metodos.cargarRecetas(dataBase);
+
+        platos=dataBase.consultas().getPlatos();//todos los platos de la bbdd
+
+        //iniciamos el arrayadapter para poder cargar el listView con la lista de platos
+        PlatosArrayAdapter platosArrayAdapter=new PlatosArrayAdapter(this,platos);
+        listViewPlatos.setAdapter(platosArrayAdapter);
     }
 
 

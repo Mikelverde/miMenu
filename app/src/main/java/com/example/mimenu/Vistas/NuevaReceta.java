@@ -2,6 +2,7 @@ package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mimenu.DataBase;
+import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Ingrediente;
@@ -119,5 +121,10 @@ public class NuevaReceta extends AppCompatActivity {
 
 
 
+    }
+
+    public void atras2(View view){
+        Intent i=new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
