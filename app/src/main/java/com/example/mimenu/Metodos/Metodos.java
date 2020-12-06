@@ -105,7 +105,7 @@ public class Metodos {
         ingredienteArrayList.add(new Ingrediente(13,"g","Calabacín"));
         ingredienteArrayList.add(new Ingrediente(14,"ud","Patata"));
         ingredienteArrayList.add(new Ingrediente(15,"ud","Zanahoria"));
-        ingredienteArrayList.add(new Ingrediente(16,"ud","Lechuga"));
+        ingredienteArrayList.add(new Ingrediente(16,"g","Lechuga"));
         ingredienteArrayList.add(new Ingrediente(17,"g","Beicon"));
         ingredienteArrayList.add(new Ingrediente(18,"g","Queso de cabra"));
         ingredienteArrayList.add(new Ingrediente(19,"ud","Nueces"));

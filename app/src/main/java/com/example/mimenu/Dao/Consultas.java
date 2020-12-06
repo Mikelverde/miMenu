@@ -54,6 +54,10 @@ public interface Consultas {
 
     @Query("SELECT nombreIngrediente, SUM(cantidad) as cantidad,MAX(unidades) as unidades FROM Menu INNER JOIN Receta ON menu.idPlato=Receta.idPlato INNER JOIN Ingrediente ON Receta.idIngrediente=Ingrediente.idIngrediente GROUP BY nombreIngrediente")
     List<IngredienteListaCompra> listaCompra();
+    @Query("DELETE FROM Plato where idPlato= :idPlato")
+    void borrarPlato(int idPlato);
+
+
 
 
 

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,9 +40,12 @@ public class ListaPlatos extends AppCompatActivity {
         PlatosArrayAdapter platosArrayAdapter=new PlatosArrayAdapter(this,platos);
         listViewPlatos.setAdapter(platosArrayAdapter);
 
+
+
         listViewPlatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
                 int itemSeleccionado=listViewPlatos.getCheckedItemPosition();
                 Intent intent=new Intent(getApplicationContext(), DetallesPlato.class);
                 intent.putExtra("idPlato",position+1);

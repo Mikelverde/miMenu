@@ -1,5 +1,6 @@
 package com.example.mimenu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import com.example.mimenu.Vistas.ListaCompra;
 import com.example.mimenu.Vistas.ListaPlatos;
 import com.example.mimenu.Vistas.MenuSemanal;
 import com.example.mimenu.Vistas.NuevoPlato;
+import com.example.mimenu.Vistas.NumeroComensales;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.btn_listaCompra:
-                i=new Intent(this, ListaCompra.class);
+
+                i=new Intent(this, NumeroComensales.class);
                 startActivity(i);
                 break;
         }
     }
-}
+
+
+    }

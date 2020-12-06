@@ -1,6 +1,8 @@
 package com.example.mimenu;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +11,13 @@ import android.widget.ArrayAdapter;
 
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.Tablas.IngredienteListaCompra;
+import com.example.mimenu.Vistas.NumeroComensales;
 
 import java.util.List;
 
     public class ListaCompraArrayAdapter extends ArrayAdapter<IngredienteListaCompra> {
+
+        private int comensales;
 
     public ListaCompraArrayAdapter(Context context, List<IngredienteListaCompra> listaCompra) {
             super(context, 0,listaCompra);
@@ -38,8 +43,14 @@ import java.util.List;
             // Lead actual.
             IngredienteListaCompra ingrediente = getItem(position);
 
+            //obtener el numero de comensales almacenado en la sharedPreferences
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(ingredienteMenu.getContext());
+        comensales=preferences.getInt("comensales",1);
+
+
+
         //necesito los datos del plato y del ingrediente
-        ingredienteMenu.setText(ingrediente.nombreIngrediente+" "+ingrediente.cantidad+" "+ingrediente.unidades);
+        ingredienteMenu.setText(ingrediente.nombreIngrediente+" "+(int)(ingrediente.cantidad*comensales)+" "+ingrediente.unidades);
         return convertView;
             }
             }

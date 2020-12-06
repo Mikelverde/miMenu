@@ -2,6 +2,8 @@ package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -37,4 +39,5 @@ public class ListaCompra extends AppCompatActivity {
         ListaCompraArrayAdapter listaCompraArrayAdapter=new ListaCompraArrayAdapter(this, listaCompra);
         listListaCompra.setAdapter(listaCompraArrayAdapter);
     }
+
 }

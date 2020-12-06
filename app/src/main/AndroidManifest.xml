@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiMenu">
-        <activity android:name=".Vistas.ListaCompra"></activity>
+        <activity android:name=".Vistas.NumeroComensales"></activity>
+        <activity android:name=".Vistas.MainActivity" />
+        <activity android:name=".Vistas.ListaCompra" />
         <activity android:name=".Vistas.MenuSemanal" />
         <activity android:name=".Vistas.DetallesPlato" />
         <activity android:name=".Vistas.ListaPlatos" />

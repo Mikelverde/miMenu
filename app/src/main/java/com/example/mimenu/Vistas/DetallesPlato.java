@@ -3,7 +3,9 @@ package com.example.mimenu.Vistas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -91,5 +93,10 @@ public class DetallesPlato extends AppCompatActivity {
     public void atras(View view){
         Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
+        }
+        public void borrarPlato(View view){
+        /*dataBase.consultas().borrarPlato(plato.idPlato);
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);*/
         }
     }
