@@ -1,4 +1,4 @@
-package com.example.mimenu.Tablas;
+ package com.example.mimenu.Tablas;
 
 public class IngredienteListaCompra {
 

@@ -1,4 +1,4 @@
-package com.example.mimenu;
+package com.example.mimenu.Adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
     import android.widget.TextView;
 
 import com.example.mimenu.Metodos.Metodos;
+import com.example.mimenu.R;
 import com.example.mimenu.Tablas.IngredienteListaCompra;
 import com.example.mimenu.Vistas.NumeroComensales;
 

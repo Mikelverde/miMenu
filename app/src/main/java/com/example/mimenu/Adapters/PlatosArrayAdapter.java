@@ -1,4 +1,4 @@
-package com.example.mimenu;
+package com.example.mimenu.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Plato;
 
 import java.util.List;

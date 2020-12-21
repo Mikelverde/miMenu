@@ -2,19 +2,14 @@ package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.mimenu.DataBase;
-import com.example.mimenu.ListaCompraArrayAdapter;
+import com.example.mimenu.Adapters.ListaCompraArrayAdapter;
 import com.example.mimenu.Metodos.Metodos;
-import com.example.mimenu.PlatosArrayAdapter;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.IngredienteListaCompra;
-import com.example.mimenu.Tablas.Menu;
-import com.example.mimenu.Tablas.Plato;
 
 import java.util.List;
 

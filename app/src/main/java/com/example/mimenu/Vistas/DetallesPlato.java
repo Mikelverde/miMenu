@@ -3,9 +3,7 @@ package com.example.mimenu.Vistas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,7 +14,7 @@ import com.example.mimenu.DataBase;
 import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
-import com.example.mimenu.RecetaArrayAdapter;
+import com.example.mimenu.Adapters.RecetaArrayAdapter;
 import com.example.mimenu.Tablas.Ingrediente;
 import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
@@ -95,8 +93,8 @@ public class DetallesPlato extends AppCompatActivity {
         startActivity(i);
         }
         public void borrarPlato(View view){
-        /*dataBase.consultas().borrarPlato(plato.idPlato);
+        dataBase.consultas().borrarPlato(plato.idPlato);
         Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);*/
+        startActivity(intent);
         }
     }

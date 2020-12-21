@@ -1,19 +1,16 @@
 package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.mimenu.DataBase;
 import com.example.mimenu.Metodos.Metodos;
-import com.example.mimenu.PlatosArrayAdapter;
+import com.example.mimenu.Adapters.PlatosArrayAdapter;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Plato;
 

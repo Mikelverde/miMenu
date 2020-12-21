@@ -1,4 +1,4 @@
-package com.example.mimenu;
+package com.example.mimenu.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.mimenu.DataBase;
 import com.example.mimenu.Metodos.Metodos;
+import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Ingrediente;
 import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
