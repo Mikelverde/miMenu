@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ public class NuevaReceta extends AppCompatActivity {
     private Bundle datosPlato;
     private String nombrePlatoGuardado;
     ArrayList<String> arrayListIngredientes;
-    private Spinner spinnerIngredientes;
+    private AutoCompleteTextView spinnerIngredientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class NuevaReceta extends AppCompatActivity {
         Receta receta=new Receta();
         try {
             receta.idPlato=plato.idPlato;
-            receta.idIngrediente=dataBase.consultas().buscarIdIngrediente(spinnerIngredientes.getSelectedItem().toString());
+            receta.idIngrediente=dataBase.consultas().buscarIdIngrediente(spinnerIngredientes.getText().toString());
             receta.cantidad=Integer.parseInt(txtCantidad.getText().toString());
             long correcto=dataBase.consultas().insertReceta(receta);
             if(correcto>0){

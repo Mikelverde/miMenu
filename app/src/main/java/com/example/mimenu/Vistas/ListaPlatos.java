@@ -39,15 +39,16 @@ public class ListaPlatos extends AppCompatActivity {
 
 
 
-        listViewPlatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listViewPlatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 int itemSeleccionado=listViewPlatos.getCheckedItemPosition();
                 Intent intent=new Intent(getApplicationContext(), DetallesPlato.class);
-                intent.putExtra("idPlato",position+1);
+               //intent.putExtra("idPlato",position+1);
+                int identificador=platos.get(position).idPlato;
+                intent.putExtra("idPlato",identificador);
                 startActivity(intent);
-                return false;
             }
         });
     }

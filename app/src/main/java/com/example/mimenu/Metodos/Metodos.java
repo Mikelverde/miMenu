@@ -1,24 +1,28 @@
 package com.example.mimenu.Metodos;
 
 import android.content.Context;
-import android.content.Intent;
-import android.provider.ContactsContract;
-import android.view.View;
-
-import androidx.room.Database;
 import androidx.room.Room;
-
 import com.example.mimenu.DataBase;
-import com.example.mimenu.MainActivity;
 import com.example.mimenu.Tablas.Ingrediente;
 import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
+/**
+ * Esta clase contiene algunos funciones y procedimientos
+ * @author Mikel
+ * @version 30/12/20
+ */
 public class Metodos {
 
+    /**
+     * Función que devuelve la BD asociada a la aplicación (context)
+     * @param context
+     * @return DataBase (Base de datos)
+     */
     public static DataBase getDataBase(Context context){
         DataBase dataBase = Room.databaseBuilder(context,DataBase.class,"DataBase")
                 .allowMainThreadQueries()
@@ -26,11 +30,19 @@ public class Metodos {
         return dataBase;
     }
 
-
+    /**
+     * Metodo que borra todo el contenido de la BD indicada por parametro
+     * @param dataBase
+     */
     public static void borrarBBDD(DataBase dataBase){
         dataBase.clearAllTables();
     }
 
+    /**
+     * Metodo que carga una lista de platos determinada en la BD indicada por parametro.
+     * De modo que, genera una lista de platos que es recorrida cargando en la BD cada plato de 1 en 1.
+     * @param dataBase
+     */
     public static void cargarPlatos(DataBase dataBase){
         ArrayList<Plato> platoArrayList = new ArrayList<>();
         platoArrayList.add(new Plato(1,"Judías verdes","Verdura","Primero"));
@@ -87,8 +99,12 @@ public class Metodos {
         }
     }
 
+    /**
+     * Metodo que carga una lista de ingredientes determinada en la BD indicada por parametro.
+     * De modo que, genera una lista de ingredientes que es recorrida cargando en la BD cada ingrediente de 1 en 1.
+     * @param dataBase
+     */
     public static   void cargarIngredientes(DataBase dataBase ){
-
         ArrayList<Ingrediente> ingredienteArrayList=new ArrayList<>();
         ingredienteArrayList.add(new Ingrediente(1,"g","Judias verdes"));
         ingredienteArrayList.add(new Ingrediente(2,"ud","Ajo"));
@@ -153,6 +169,11 @@ public class Metodos {
         }
     }
 
+    /**
+     * Metodo que carga una lista de recetas (ingredientes que componen un plato) determinada en la BD indicada por parametro.
+     * De modo que, genera una lista de receta que es recorrida cargando en la BD cada receta de 1 en 1.
+     * @param dataBase
+     */
     public static void cargarRecetas(DataBase dataBase){
         ArrayList<Receta> recetaArrayList=new ArrayList<>();
         recetaArrayList.add(new Receta(1,1,200));
@@ -345,6 +366,4 @@ public class Metodos {
             dataBase.consultas().insertReceta(recetaArrayList.get(i));
         }
     }
-
-
 }

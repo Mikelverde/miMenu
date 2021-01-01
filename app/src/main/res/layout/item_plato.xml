@@ -16,6 +16,7 @@
         android:layout_marginRight="8dp"
         android:fontFamily="@font/arial"
         android:text="Item"
+        android:textColor="@color/black"
         android:textSize="22sp" />
 
 </LinearLayout>
