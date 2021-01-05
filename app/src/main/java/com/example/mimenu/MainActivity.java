@@ -1,6 +1,5 @@
 package com.example.mimenu;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,11 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.mimenu.Metodos.Metodos;
-import com.example.mimenu.Vistas.ListaCompra;
 import com.example.mimenu.Vistas.ListaPlatos;
 import com.example.mimenu.Vistas.MenuSemanal;
 import com.example.mimenu.Vistas.NuevoPlato;
 import com.example.mimenu.Vistas.NumeroComensales;
+
+/**
+ * Clase MainActivity contiene la actividad principal
+ * @author Mikel
+ * @version 30/12/20
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodo para navegar de una actividad a otra segun el boton pulsado
+     * @param view
+     */
     public void PantallaInicio(View view){
         Intent i;
         switch (view.getId()){
@@ -57,4 +65,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    }
+}

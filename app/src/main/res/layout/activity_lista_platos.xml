@@ -46,7 +46,7 @@
         style="@style/botones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:onClick="cargarBBDD"
         android:text="@string/resetear_bbdd"
         android:textSize="35dp"
@@ -54,5 +54,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listV_Ingredientes"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        style="@style/botones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="atras3"
+        android:text="@string/volver"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

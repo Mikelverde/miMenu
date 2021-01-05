@@ -1,14 +1,16 @@
 package com.example.mimenu.Metodos;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+
+import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 import com.example.mimenu.DataBase;
+import com.example.mimenu.MainActivity;
 import com.example.mimenu.Tablas.Ingrediente;
 import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 /**
@@ -366,4 +368,6 @@ public class Metodos {
             dataBase.consultas().insertReceta(recetaArrayList.get(i));
         }
     }
+
+
 }

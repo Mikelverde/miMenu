@@ -11,6 +11,11 @@ import android.widget.EditText;
 
 import com.example.mimenu.R;
 
+/**
+ * Activity para indicar el numero de comensales para elaborar la lista de la compra
+ * @author Mikel
+ * @version 30/12/20
+ */
 public class NumeroComensales extends AppCompatActivity {
 
     public EditText txt_comensales;
@@ -25,6 +30,10 @@ public class NumeroComensales extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodo para leer el numero de comensales al pulsar el boton
+     * @param view
+     */
     public void numeroComensales(View view){
         try {
             comensales=Integer.parseInt(txt_comensales.getText().toString());

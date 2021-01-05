@@ -9,14 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.example.mimenu.DataBase;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Plato;
-
 import java.util.ArrayList;
 
+/**
+ * Activity para rellenar los datos sobre la composicion de un plato nuevo
+ * @author Mikel
+ * @version 30/12/20
+ */
 public class NuevoPlato extends AppCompatActivity {
 
     DataBase dataBase;
@@ -61,20 +64,26 @@ public class NuevoPlato extends AppCompatActivity {
     public void insertarPlato(View view){
         Intent i=new Intent(this, NuevaReceta.class);
         try {
-            //Cargamos los datos recogidos de la pantalla en el plato
-            plato.nombrePlato=nombrePlato.getText().toString();
-            plato.orden=spinnerOrden.getSelectedItem().toString();
-            plato.tipo=spinnerTipo.getSelectedItem().toString();
-            //cargamos el plato en la bbdd, si funciona correcto >0
-            long correcto=dataBase.consultas().insertPlato(plato);
-            if(correcto>0){
-                Toast.makeText(this, "PLATO GUARDADO", Toast.LENGTH_SHORT).show();
-                //si todo ha salido bien cambiamos de pantalla y pasamos la idPlato a la siguiente pantalla
-                i.putExtra("plato",plato.nombrePlato);
-                startActivity(i);
-            }else {
-                Toast.makeText(this, "HA OCURRIDO UN ERROR", Toast.LENGTH_SHORT).show();
+
+            if (nombrePlato.getText().toString().isEmpty()){
+                Toast.makeText(this, "NOMBRE DEL PLATO INCORRECTO", Toast.LENGTH_SHORT).show();
+            }else{
+                //Cargamos los datos recogidos de la pantalla en el plato
+                plato.nombrePlato=nombrePlato.getText().toString();
+                plato.orden=spinnerOrden.getSelectedItem().toString();
+                plato.tipo=spinnerTipo.getSelectedItem().toString();
+                //cargamos el plato en la bbdd, si funciona correcto >0
+                long correcto=dataBase.consultas().insertPlato(plato);
+                if(correcto>0){
+                    Toast.makeText(this, "PLATO GUARDADO", Toast.LENGTH_SHORT).show();
+                    //si todo ha salido bien cambiamos de pantalla y pasamos la idPlato a la siguiente pantalla
+                    i.putExtra("plato",plato.nombrePlato);
+                    startActivity(i);
+                }else {
+                    Toast.makeText(this, "HA OCURRIDO UN ERROR", Toast.LENGTH_SHORT).show();
+                }
             }
+
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
 

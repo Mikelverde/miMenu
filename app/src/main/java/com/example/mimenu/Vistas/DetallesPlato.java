@@ -17,9 +17,6 @@ import com.example.mimenu.Tablas.Plato;
 import com.example.mimenu.Tablas.Receta;
 import java.util.List;
 
-
-
-
 public class DetallesPlato extends AppCompatActivity {
 
     private TextView txtnombrePlato,txtTipoPlato, txtOrdenPLato;
@@ -27,7 +24,6 @@ public class DetallesPlato extends AppCompatActivity {
     ListView listViewReceta;
     private DataBase dataBase;
     private Plato plato;
-    private List<Ingrediente> ingredientes;
     private List<Receta> receta;
 
     @Override
@@ -59,6 +55,7 @@ public class DetallesPlato extends AppCompatActivity {
             RecetaArrayAdapter recetaArrayAdapter=new RecetaArrayAdapter(this,receta);
             listViewReceta.setAdapter(recetaArrayAdapter);
 
+            //le asignamos el icono segun el tipo de plato
             switch (plato.tipo){
                 case "Verdura":
                     icono.setImageResource(R.drawable.vegetables);
@@ -87,13 +84,23 @@ public class DetallesPlato extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
+    /**
+     * Metodo para regresa a a la activity anterior
+     * @param view
+     */
     public void atras(View view){
         Intent i=new Intent(this, ListaPlatos.class);
         startActivity(i);
-        }
-        public void borrarPlato(View view){
+    }
+
+    /**
+     * Metodo para borrar un plato de la BD al pulsar el boton
+     * @param view
+     */
+    public void borrarPlato(View view){
         dataBase.consultas().borrarPlato(plato.idPlato);
         Intent intent=new Intent(this,ListaPlatos.class);
         startActivity(intent);
-        }
     }
+}

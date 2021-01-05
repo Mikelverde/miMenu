@@ -14,7 +14,7 @@ import com.example.mimenu.Tablas.IngredienteListaCompra;
 import java.util.List;
 
 /**
- * Activity sobre la que se presenta la informacion sobre la lista de la compra asociada al menu semanal
+ * Activity sobre la que se presenta la informacion de la lista de la compra asociada al menu semanal
  * @author Mikel
  * @version 30/12/20
  */

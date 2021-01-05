@@ -1,23 +1,25 @@
 package com.example.mimenu.Vistas;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.mimenu.DataBase;
 import com.example.mimenu.MainActivity;
 import com.example.mimenu.Metodos.Metodos;
 import com.example.mimenu.R;
 import com.example.mimenu.Tablas.Menu;
 import com.example.mimenu.Tablas.Plato;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity sobre la que se presenta la informacion del menu semanal generado
+ * @author Mikel
+ * @version 30/12/20
+ */
 public class MenuSemanal extends AppCompatActivity {
 
     DataBase dataBase;
@@ -60,7 +62,7 @@ public class MenuSemanal extends AppCompatActivity {
         // 1  arroz y ensalada
         // 3  verdura y un segundo
 
-
+        //si al iniciciar la aplicacion no existe un menu generado anteriormente genera uno
         if(dataBase.consultas().listarMenu().size()==0){
             menuSemanal= generarMenu();
             escribirMenu(menuSemanal);
@@ -71,6 +73,9 @@ public class MenuSemanal extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodo para recopilar por tipo de plato todos los platos de la bd
+     */
     private void cragarPlatosXTipo() {
         verduras=buscarPlatoXTipo("Verdura");
         legumbres=buscarPlatoXTipo("Legumbre");
@@ -80,7 +85,10 @@ public class MenuSemanal extends AppCompatActivity {
         segundos=dataBase.consultas().buscarPlatoXOrden("Segundo");
     }
 
-    //genera y guarda en la bbdd un menu
+    /**
+     * Metodo que genera un menu a partir de las listas de plato por tipo
+     * @return
+     */
     private List<Menu> generarMenu() {
         cragarPlatosXTipo();
         int primeraLegumbre=generarNumeroAleatorioEntre(0,legumbres.size());
@@ -141,17 +149,33 @@ public class MenuSemanal extends AppCompatActivity {
 
     //Metodos para cargar en arrays los platos disponibles divididos por tipo de plato
 
+    /**
+     * Metodo para buscar platos segun su tipo
+     * @param tipo (verdura, legumbre...)
+     * @return lista con los platos
+     */
     public List<Plato> buscarPlatoXTipo(String tipo){
         List<Plato> platoList= dataBase.consultas().buscarPlatoXTipo(tipo);
         return platoList;
     }
 
+    /**
+     * generamos un numero aleatorio entre dos valores num1 y num2
+     * @param num1
+     * @param num2
+     * @return
+     */
     public  int generarNumeroAleatorioEntre(int num1, int num2){
         int numAleatorio=(int)Math.floor(Math.random()*(num1-num2)+num2);
         return numAleatorio;
     }
 
     //cargamos los daos de la tabla menu para rellenar los TextView correspondientes
+
+    /**
+     * metodo para escribir el menu semanal en la activity
+     * @param menusemanal
+     */
     public void escribirMenu(List<Menu> menusemanal){
         //Para un futuro desarrollo donde habra distintos tipos de menus semanales
         int semana=generarNumeroAleatorioEntre(1,3);
@@ -174,6 +198,11 @@ public class MenuSemanal extends AppCompatActivity {
         }
     }
 
+    /**
+     * Al pulsar el boton "Generar menu" se realizan las operaciones necesarias para mostrarle al
+     * usuario el menu semanal por pantalla
+     * @param view
+     */
     public void grabarMenu(View view){
 
         List<Menu> menuList=dataBase.consultas().listarMenu();
@@ -183,10 +212,7 @@ public class MenuSemanal extends AppCompatActivity {
             }catch (Exception e){
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }else {//existe un menu previo, hay que borrarlo y generar uno nuevo
-            /*for (int i = 0; i <menuSemanal.size() ; i++) {
-                dataBase.consultas().borrarPlatoMenu(menuSemanal.get(i));
-            }*/
+        }else {
             menuSemanal=dataBase.consultas().listarMenu();
             dataBase.consultas().borrarPlatoMenu(menuSemanal);
             generarMenu();
@@ -199,6 +225,11 @@ public class MenuSemanal extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * Al pulsar el boton volvemos a la activity anterior
+     * @param view
+     */
     public void atras2(View view){
         Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
